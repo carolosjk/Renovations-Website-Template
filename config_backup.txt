@@ -1,18 +1,22 @@
-"""
+﻿"""
 Configuration for Elite Renovations contact form
 This file contains sensitive information - do not commit to version control
 """
 
-# reCAPTCHA configuration
-RECAPTCHA_SITE_KEY = "6LcXXXXXXXXXXXXXXXXXXXXX"  # Replace with your actual site key
-RECAPTCHA_SECRET_KEY = "6LcXXXXXXXXXXXXXXXXXXXXX"  # Replace with your actual secret key
+# reCAPTCHA v3 configuration
+RECAPTCHA_SITE_KEY = "6Ld1dlIrAAAAADYYUe7WXzX912pxtElLmep58xLt"  # Replace with your actual v3 site key
+RECAPTCHA_SECRET_KEY = "6Ld1dlIrAAAAAK3WWHRYhV8rp_UDoD5le98tOXTp"  # Replace with your actual v3 secret key
+RECAPTCHA_MIN_SCORE = 0.5  # Minimum score threshold (0.0 to 1.0)
 
 # Email configuration
-EMAIL_ADDRESS = "contact@anakainiseis.eu"
-EMAIL_PASSWORD = "your-password-here"  # Replace with your actual email password
+EMAIL_ADDRESS = "hellasrenovations@gmail.com"
+EMAIL_PASSWORD = "dgfn qiig zfkx uwgw"  # Replace with your actual email password
 EMAIL_RECIPIENT = "contact@anakainiseis.eu"  # Where to send contact form submissions
 SMTP_SERVER = "smtp.gmail.com"  # Replace with your SMTP server
 SMTP_PORT = 587  # Common TLS port
+
+# Appearance settings
+EMAIL_SENDER_NAME = "Elite Renovations"  # Name that appears in the From field
 
 # Logging
 LOG_FILE = "contact-form.log"

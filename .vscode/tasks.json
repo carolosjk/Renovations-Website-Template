@@ -2,15 +2,22 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Start Network Live Server",
+			"label": "Start PHP Server",
 			"type": "shell",
 			"command": "powershell.exe",
 			"args": [
 				"-c",
-				"Start-Process -FilePath 'http://192.168.2.4:8000'; python -m http.server 8000 --bind 0.0.0.0"
+				"Start-Process -FilePath 'http://localhost:8000'; php -S localhost:8000"
 			],
-			"group": "build",
-			"isBackground": true
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"isBackground": true,
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			}
 		}
 	]
 }

@@ -94,51 +94,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
+        // Ensure we're preventing the default form submission
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // This prevents the browser from submitting the form normally
             
-            // Check if reCAPTCHA is filled
-            let recaptchaResponse = '';
+            // Execute reCAPTCHA v3 verification
             if (typeof grecaptcha !== 'undefined') {
-                recaptchaResponse = grecaptcha.getResponse();
-                if (!recaptchaResponse) {
-                    const currentLanguage = localStorage.getItem('language') || 'en';
-                    const translations = currentLanguage === 'el' ? elTranslations : enTranslations;
-                    showFormMessage(translations.form_captcha_error || '⚠️ Please complete the captcha verification', 'error');
-                    return;
-                }
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Ld1dlIrAAAAADYYUe7WXzX912pxtElLmep58xLt', {action: 'submit'})
+                    .then(function(token) {                        // Add the token to the form
+                        document.getElementById('recaptcha_token').value = token;
+                        
+                        // Continue with form submission
+                        submitContactForm(token);
+                    })
+                    .catch(function(error) {
+                        console.error('reCAPTCHA error:', error);
+                        const currentLanguage = localStorage.getItem('language') || 'en';
+                        const translations = currentLanguage === 'el' ? elTranslations : enTranslations;
+                        showFormMessage(translations.form_captcha_error || '⚠️ reCAPTCHA verification failed', 'error');
+                    });
+                });
+            } else {
+                submitContactForm('');
             }
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            formData.append('g-recaptcha-response', recaptchaResponse);
-            
-            // Client-side validation for required fields
-            const formDataObj = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                message: document.getElementById('message').value.trim(),
-                website: document.getElementById('website').value // Honeypot field
-            };
-            
-            if (!validateForm(formDataObj)) {
-                return;
-            }
-            
-            // Show loading state
-            const submitBtn = contactForm.querySelector('.btn-submit');
-            const originalBtnText = submitBtn.textContent;
-            const currentLanguage = localStorage.getItem('language') || 'en';
-            const translations = currentLanguage === 'el' ? elTranslations : enTranslations;
-            
-            submitBtn.textContent = translations.form_sending || 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Send form data to Python backend
-            fetch('/send-email', {
-                method: 'POST',
-                body: formData, // Using FormData instead of JSON for file uploads and captcha
-            })
+        });
+    }
+      function submitContactForm(recaptchaToken) {
+        const contactForm = document.getElementById('contactForm');
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        // We don't need to append the token again since we're now using the correct name in the hidden input
+          // Client-side validation for required fields
+        const formDataObj = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            message: document.getElementById('message').value.trim(),
+            website: document.getElementById('website').value // Honeypot field
+        };
+        
+        if (!validateForm(formDataObj)) {
+            return;
+        }
+        
+        // Show loading state
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        const originalBtnText = submitBtn.textContent;
+        const currentLanguage = localStorage.getItem('language') || 'en';
+        const translations = currentLanguage === 'el' ? elTranslations : enTranslations;
+        
+        submitBtn.textContent = translations.form_sending || 'Sending...';
+        submitBtn.disabled = true;        // Send form data to PHP backend
+        fetch('send-email.php', {
+            method: 'POST',
+            body: formData // Using FormData instead of JSON for captcha
+        })
             .then(response => response.json())
             .then(data => {
                 const currentLanguage = localStorage.getItem('language') || 'en';
