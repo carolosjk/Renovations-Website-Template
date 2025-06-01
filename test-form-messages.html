@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Message Test - Elite Renovations</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            padding: 2rem;
+            font-family: var(--body-font);
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+        .test-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .test-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .test-btn.success {
+            background: #28a745;
+            color: white;
+        }
+        .test-btn.error {
+            background: #dc3545;
+            color: white;
+        }
+        .form-container {
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Form Message System Test</h1>
+        <p>This page tests the new inline form message system. Click the buttons below to test different message types:</p>
+        
+        <div class="test-buttons">
+            <button class="test-btn success" onclick="testSuccessMessage()">Test Success Message</button>
+            <button class="test-btn error" onclick="testErrorMessage()">Test Error Message</button>
+            <button class="test-btn" onclick="clearMessages()" style="background: #6c757d; color: white;">Clear Messages</button>
+        </div>
+
+        <div class="form-container">
+            <h3>Contact Form</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="languages/en.js"></script>
+    <script src="languages/el.js"></script>
+    <script>
+        // Test functions for message system
+        function testSuccessMessage() {
+            showFormMessage('✨ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+        }
+
+        function testErrorMessage() {
+            showFormMessage('😔 Oops! Something went wrong. Please try again or contact us directly at contact@anakainiseis.eu', 'error');
+        }
+
+        function clearMessages() {
+            const messages = document.querySelectorAll('.form-response-message');
+            messages.forEach(msg => msg.remove());
+        }
+
+        // Show form submission message function (same as in main script)
+        function showFormMessage(message, type) {
+            // Remove existing message
+            const existingMessage = document.querySelector('.form-response-message');
+            if (existingMessage) {
+                existingMessage.style.animation = 'slideOutToTop 0.3s ease-in forwards';
+                setTimeout(() => {
+                    if (existingMessage.parentNode) {
+                        existingMessage.remove();
+                    }
+                }, 300);
+            }
+            
+            // Wait a bit before showing new message if there was an existing one
+            setTimeout(() => {
+                // Create message element
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `form-response-message ${type}`;
+                messageDiv.innerHTML = message; // Use innerHTML to support emojis and HTML
+                
+                // Insert message before form
+                const contactForm = document.getElementById('contactForm');
+                contactForm.parentNode.insertBefore(messageDiv, contactForm);
+                
+                // Auto-remove message after 8 seconds (longer for success messages)
+                const autoRemoveTime = type === 'success' ? 8000 : 6000;
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.style.animation = 'slideOutToTop 0.3s ease-in forwards';
+                        setTimeout(() => {
+                            if (messageDiv.parentNode) {
+                                messageDiv.remove();
+                            }
+                        }, 300);
+                    }
+                }, autoRemoveTime);
+                
+                // Scroll to message smoothly
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, existingMessage ? 350 : 0);
+        }
+
+        // Test actual form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            // Basic validation
+            if (!formData.name || !formData.email || !formData.message) {
+                showFormMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            // Show sending state
+            const submitBtn = this.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show success message and reset form
+                showFormMessage('✨ Thank you! Your test message was processed successfully.', 'success');
+                this.reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

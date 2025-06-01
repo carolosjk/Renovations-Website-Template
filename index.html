@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Renovations - Transform Your Space</title>    <meta name="description" content="Professional home and commercial renovation services. View our portfolio and contact us for your next project.">    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap&subset=greek,latin-ext" rel="stylesheet">
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Language files -->
+    <script src="languages/en.js"></script>
+    <script src="languages/el.js"></script>
+</head>
+<body>    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Elite Renovations</h1>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                    <li><a href="#portfolio" data-i18n="nav_work">Our Work</a></li>
+                    <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>                    <li><a href="#contact" class="btn-contact" data-i18n="nav_contact">Contact Us</a></li>
+                    <li class="lang-switcher">
+                        <div class="language-selector">
+                            <button id="langEN" class="language-btn active" data-lang="en" aria-label="Switch to English">
+                                <i class="flag-icon flag-icon-us"></i>
+                            </button>
+                            <button id="langEL" class="language-btn" data-lang="el" aria-label="Switch to Greek">
+                                <i class="flag-icon flag-icon-gr"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>    <section id="hero">
+        <div class="hero-content">
+            <h2 data-i18n="hero_title">Transform Your Space</h2>
+            <p data-i18n="hero_subtitle">Quality renovations that turn your vision into reality</p>
+            <a href="#contact" class="btn" data-i18n="hero_cta">Request a Quote</a>
+        </div>
+    </section>    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="services_title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3 data-i18n="service_home_title">Home Renovations</h3>
+                    <p data-i18n="service_home_desc">Complete home makeovers, additions, and structural improvements tailored to your needs.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-sink"></i>
+                    <h3 data-i18n="service_kitchen_title">Kitchen Remodeling</h3>
+                    <p data-i18n="service_kitchen_desc">Modern kitchen designs with custom cabinetry, countertops, and premium appliance installation.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bath"></i>
+                    <h3 data-i18n="service_bathroom_title">Bathroom Renovations</h3>
+                    <p data-i18n="service_bathroom_desc">Luxurious bathroom upgrades including fixtures, tiling, vanities, and custom showers.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-plug"></i> <!-- Changed icon for Electrical & Plumbing -->
+                    <h3 data-i18n="service_electrical_plumbing_title">Electrical & Plumbing Work</h3>
+                    <p data-i18n="service_electrical_plumbing_desc">Professional electrical and plumbing services, ensuring safety and efficiency for all your renovation projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="portfolio_title">Our Portfolio</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all" data-i18n="portfolio_filter_all">All</button>
+                <button class="filter-btn" data-filter="kitchen" data-i18n="portfolio_filter_kitchen">Kitchen</button>
+                <button class="filter-btn" data-filter="bathroom" data-i18n="portfolio_filter_bathroom">Bathroom</button>
+                <button class="filter-btn" data-filter="internal" data-i18n="portfolio_filter_internal">Internal Renovations</button>
+                <button class="filter-btn" data-filter="commercial" data-i18n="portfolio_filter_commercial">Commercial Spaces</button>
+                <button class="filter-btn" data-filter="special" data-i18n="portfolio_filter_special">Special Projects</button>
+            </div>            <div class="portfolio-grid">
+                <div class="portfolio-item kitchen internal">
+                    <img src="images/kitchen-1.jpg" alt="Modern Apartment Kitchen">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item1_title">Modern Apartment Kitchen</h3>
+                        <p data-i18n="portfolio_item1_desc">Sleek, functional kitchen in a newly renovated apartment.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item bathroom internal">
+                    <img src="images/bathroom-1.jpg" alt="Luxury Villa Bathroom">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item2_title">Luxury Villa Bathroom</h3>
+                        <p data-i18n="portfolio_item2_desc">Spa-like bathroom with high-end finishes in a luxury villa.</p>
+                    </div>
+                </div>                <div class="portfolio-item commercial">
+                    <img src="images/office-reception.jpg" alt="Office Reception Area">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item3_title">Office Reception Area</h3>
+                        <p data-i18n="portfolio_item3_desc">Welcoming and professional reception for a corporate office.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item bathroom internal">
+                    <img src="images/bathroom-2.jpg" alt="Modern Bathroom Design">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item4_title">Modern Bathroom Design</h3>
+                        <p data-i18n="portfolio_item4_desc">Contemporary bathroom with sleek fixtures and elegant finishes.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item internal">
+                    <img src="images/bedroom-1.jpg" alt="Master Bedroom Suite">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item5_title">Master Bedroom Suite</h3>
+                        <p data-i18n="portfolio_item5_desc">Elegant bedroom renovation with custom built-ins and luxurious finishes.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item special internal">
+                    <img src="images/living-room-1.jpg" alt="Whole House Living Area Renovation">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item6_title">Whole House Living Area</h3>
+                        <p data-i18n="portfolio_item6_desc">Complete living space transformation as part of whole house renovation.</p>
+                    </div>
+                </div>                <div class="portfolio-item commercial">
+                    <img src="images/retail-store.jpg" alt="Retail Store Interior">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item7_title">Retail Store Interior</h3>
+                        <p data-i18n="portfolio_item7_desc">Stylish and functional interior design for a boutique retail space.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item commercial special">
+                    <img src="images/electrical-work.jpg" alt="Electrical Work">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item8_title">Electrical Work</h3>
+                        <p data-i18n="portfolio_item8_desc">Professional electrical installations and wiring for modern buildings.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item commercial special">
+                    <img src="images/plumbing-work.jpg" alt="Plumbing Work">
+                    <div class="portfolio-overlay">
+                        <h3 data-i18n="portfolio_item9_title">Plumbing Work</h3>
+                        <p data-i18n="portfolio_item9_desc">Expert plumbing services and installations for residential and commercial projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="testimonials_title">What Our Clients Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p data-i18n="testimonial1_text">"Elite Renovations transformed our outdated kitchen into a stunning modern space. The attention to detail and quality craftsmanship exceeded our expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4 data-i18n="testimonial1_author">Sarah Johnson</h4>
+                        <p data-i18n="testimonial1_project">Kitchen Renovation</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p data-i18n="testimonial2_text">"Professional team from start to finish. Our bathroom renovation was completed on time and within budget. We couldn't be happier with the results."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4 data-i18n="testimonial2_author">Michael Robinson</h4>
+                        <p data-i18n="testimonial2_project">Bathroom Remodel</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p data-i18n="testimonial3_text">"The Elite Renovations team was exceptional. Their expertise helped us make the right choices for our home addition, and the craftsmanship is impeccable."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4 data-i18n="testimonial3_author">Emily and David Thompson</h4>
+                        <p data-i18n="testimonial3_project">Home Addition</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title" data-i18n="contact_title">Contact Us</h2>
+                    <p data-i18n="contact_subtitle">Ready to start your renovation project? Contact us today for a free consultation and estimate.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p data-i18n="contact_address_label">123 Renovation Street, Building City, ST 12345</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p data-i18n="contact_phone">(555) 123-4567</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p data-i18n="contact_email">info@eliterenovations.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <p data-i18n-html="contact_hours">Monday-Friday: 8am-6pm<br>Saturday: 9am-2pm</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-houzz"></i></a>
+                    </div>
+                </div>                <div class="contact-form">
+                    <h3 data-i18n="contact_form_title">Send Us a Message</h3>                    <form id="contactForm" action="/submit-form" method="POST">
+                        <!-- Honeypot field for spam detection (hidden) -->
+                        <div class="honeypot" style="display: none;">
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" data-i18n-placeholder="contact_form_name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" data-i18n-placeholder="contact_form_email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" data-i18n-placeholder="contact_form_phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service">
+                                <option value="" disabled selected data-i18n="contact_form_select">Service Interested In</option>
+                                <option value="Kitchen" data-i18n="contact_form_kitchen">Kitchen Renovation</option>
+                                <option value="Bathroom" data-i18n="contact_form_bathroom">Bathroom Renovation</option>
+                                <option value="Basement" data-i18n="contact_form_basement">Basement Finishing</option>
+                                <option value="Addition" data-i18n="contact_form_addition">Home Addition</option>
+                                <option value="Whole Home" data-i18n="contact_form_whole">Whole Home Renovation</option>
+                                <option value="Other" data-i18n="contact_form_other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" data-i18n-placeholder="contact_form_message" placeholder="Tell us about your project" required></textarea>
+                        </div>
+                        
+                        <!-- Google reCAPTCHA v2 -->
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_HERE"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-submit" data-i18n="contact_form_submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Elite Renovations</h3>
+                    <p data-i18n="footer_tagline">Transforming spaces with quality craftsmanship since 2010</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+                        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                        <li><a href="#portfolio" data-i18n="nav_work">Our Work</a></li>
+                        <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p data-i18n="footer_copyright">&copy; 2025 Elite Renovations. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
